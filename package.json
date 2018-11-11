@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/ecomclub/ecomplus-auth-node#readme",
   "dependencies": {
-    "sqlite3": "4.x"
+    "sqlite3": "4.x",
+    "axios": "0.x"
   }
 }
