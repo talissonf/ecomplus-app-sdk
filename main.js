@@ -4,7 +4,7 @@
 // https://github.com/mapbox/node-sqlite3
 const sqlite = require('sqlite3').verbose()
 
-// setup database and table and return methods
+// setup database and table
 const setup = dbFilename => {
   return new Promise((resolve, reject) => {
     const db = new sqlite.Database(dbFilename, () => {
@@ -22,8 +22,13 @@ const setup = dbFilename => {
 
     // resolve promise with lib methods when DB is ready
     const ready = () => {
-      resolve()
+      resolve({
+        getToken: require('./lib/methods/get-token.js'),
+        handleCallback: require('./lib/methods/handle-callback.js')
+      })
     }
+    // update access tokens periodically
+    require('./lib/services/update-tokens.js')
   })
 }
 
