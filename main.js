@@ -4,6 +4,18 @@
 // https://github.com/mapbox/node-sqlite3
 const sqlite = require('sqlite3').verbose()
 
+// axios HTTP client
+// https://github.com/axios/axios
+// create an instance using the config defaults provided by the library
+const axios = require('axios').create({
+  // Store API host and base URI
+  baseURL: 'https://api.e-com.plus/v1/'
+})
+// always JSON for request with body data
+;[ 'post', 'patch', 'put' ].forEach(method => {
+  axios.defaults.headers[method]['Content-Type'] = 'application/json'
+})
+
 // setup database and table
 const setup = dbFilename => {
   return new Promise(resolve => {
@@ -21,7 +33,7 @@ const setup = dbFilename => {
         access_token                TEXT
       );`, ready)
     })
-    const client = { db, table }
+    const client = { db, table, axios }
 
     // resolve promise with lib methods when DB is ready
     const ready = () => {
