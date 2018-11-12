@@ -24,9 +24,10 @@ const setup = dbFilename => {
       if (err) {
         reject(err)
       } else {
+        // try to run first query creating table
         db.run('CREATE TABLE IF NOT EXISTS ' + table + ` (
           created_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
-          updated_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          updated_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
           application_id              INTEGER   NOT NULL  PRIMARY KEY,
           application_app_id          INTEGER   NOT NULL,
           application_title           VARCHAR   NOT NULL,
@@ -55,6 +56,7 @@ const setup = dbFilename => {
         reject(err)
       }
     }
+
     // update access tokens periodically
     require('./lib/services/update-tokens.js')(client)
   })
