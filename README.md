@@ -1,4 +1,4 @@
-# ecomplus-app-auth-node
+# ecomplus-auth-node
 
 [![CodeFactor](https://www.codefactor.io/repository/github/ecomclub/ecomplus-auth-node/badge)](https://www.codefactor.io/repository/github/ecomclub/ecomplus-auth-node)
 [![npm version](https://img.shields.io/npm/v/ecomplus-app-auth.svg)](https://www.npmjs.org/ecomplus-app-auth)
