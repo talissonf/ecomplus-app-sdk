@@ -11,6 +11,7 @@ const setup = dbFilename => {
     const db = new sqlite.Database(dbFilename, () => {
       db.run('CREATE TABLE IF NOT EXISTS ' + table + ` (
         created_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+        updated_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         application_id              INTEGER   NOT NULL  PRIMARY KEY,
         application_app_id          INTEGER   NOT NULL,
         application_title           VARCHAR   NOT NULL,
