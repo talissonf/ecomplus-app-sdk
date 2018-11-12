@@ -39,7 +39,9 @@ const setup = dbFilename => {
     const ready = () => {
       resolve({
         getAuth: require('./lib/methods/get-auth.js')(client),
-        handleCallback: require('./lib/methods/handle-callback.js')(client)
+        handleCallback: require('./lib/methods/handle-callback.js')(client),
+        apiRequest: require('./lib/methods/api-request.js')(client),
+        refreshToken: require('./lib/methods/refresh-token.js')(client)
       })
     }
     // update access tokens periodically
