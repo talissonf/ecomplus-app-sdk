@@ -1,6 +1,6 @@
 {
   "name": "ecomplus-app-auth",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Authenticating apps to Store API with NodeJS and SQLite",
   "main": "main.js",
   "scripts": {
