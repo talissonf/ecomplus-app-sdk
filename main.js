@@ -28,10 +28,10 @@ const setup = dbFilename => {
         db.run('CREATE TABLE IF NOT EXISTS ' + table + ` (
           created_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
           updated_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
-          application_id              VARCHAR   NOT NULL  PRIMARY KEY,
+          application_id              VARCHAR   NOT NULL,
           application_app_id          INTEGER   NOT NULL,
           application_title           VARCHAR   NOT NULL,
-          authentication_id           VARCHAR   NOT NULL,
+          authentication_id           VARCHAR   NOT NULL  PRIMARY KEY,
           authentication_permissions  TEXT,
           store_id                    INTEGER   NOT NULL,
           access_token                TEXT
