@@ -47,10 +47,7 @@ const setup = dbFilename => {
           getAuth: require('./lib/methods/get-auth.js')(client),
           handleCallback: require('./lib/methods/handle-callback.js')(client),
           apiRequest: require('./lib/methods/api-request.js')(client),
-          refreshToken: require('./lib/methods/refresh-token.js')(client),
-          // echo database info
-          dbFilename,
-          table
+          refreshToken: require('./lib/methods/refresh-token.js')(client)
         })
       } else {
         reject(err)
