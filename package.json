@@ -25,7 +25,6 @@
   "homepage": "https://github.com/ecomclub/ecomplus-app-sdk#readme",
   "dependencies": {
     "sqlite3": "4.x",
-    "axios": "0.x",
-    "console-files": "2.x"
+    "axios": "0.x"
   }
 }
