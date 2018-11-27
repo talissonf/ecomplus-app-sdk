@@ -43,7 +43,8 @@ const setup = dbFilename => {
             authentication_id           VARCHAR   NOT NULL  PRIMARY KEY,
             authentication_permissions  TEXT,
             store_id                    INTEGER   NOT NULL,
-            access_token                TEXT
+            access_token                TEXT,
+            setted_up                   INTEGER   NOT NULL  DEFAULT 0
           );`, ready)
         }
       })
@@ -53,10 +54,11 @@ const setup = dbFilename => {
       const ready = err => {
         if (!err) {
           resolve({
-            getAuth: require('./lib/methods/get-auth.js')(client),
-            handleCallback: require('./lib/methods/handle-callback.js')(client),
-            apiRequest: require('./lib/methods/api-request.js')(client),
-            refreshToken: require('./lib/methods/refresh-token.js')(client)
+            getAuth: require('./lib/methods/get-auth')(client),
+            handleCallback: require('./lib/methods/handle-callback')(client),
+            apiRequest: require('./lib/methods/api-request')(client),
+            refreshToken: require('./lib/methods/refresh-token')(client),
+            configureSetup: require('./lib/methods/configure-setup')(client)
           })
         } else {
           reject(err)
@@ -64,7 +66,7 @@ const setup = dbFilename => {
       }
 
       // update access tokens periodically
-      require('./lib/services/update-tokens.js')(client)
+      require('./lib/services/update-tokens')(client)
     })
   }
   return promise
