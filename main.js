@@ -56,13 +56,15 @@ promise = new Promise((resolve, reject) => {
       // resolve promise with lib methods when DB is ready
       const ready = err => {
         if (!err) {
-          resolve({
-            getAuth: require('./lib/methods/get-auth')(client),
-            handleCallback: require('./lib/methods/handle-callback')(client),
-            apiRequest: require('./lib/methods/api-request')(client),
-            refreshToken: require('./lib/methods/refresh-token')(client),
-            configureSetup: require('./lib/methods/configure-setup')(client)
-          })
+          setTimeout(() => {
+            resolve({
+              getAuth: require('./lib/methods/get-auth')(client),
+              handleCallback: require('./lib/methods/handle-callback')(client),
+              apiRequest: require('./lib/methods/api-request')(client),
+              refreshToken: require('./lib/methods/refresh-token')(client),
+              configureSetup: require('./lib/methods/configure-setup')(client)
+            })
+          }, 400)
         } else {
           reject(err)
         }
