@@ -18,10 +18,12 @@ const axios = require('axios').create({
 
 // keep returned client and promise
 let promise, client
+// try to get database filename from environtment variable
+const envDbFilename = process.env.ECOM_AUTH_DB
 
 // setup database and table
 const setup = dbFilename => {
-  dbFilename = dbFilename || process.env.ECOM_AUTH_DB || process.cwd() + '/db.sqlite3'
+  dbFilename = dbFilename || envDbFilename || process.cwd() + '/db.sqlite3'
   if (!client || client.dbFilename !== dbFilename) {
     // handle new promise
     promise = new Promise((resolve, reject) => {
@@ -72,4 +74,19 @@ const setup = dbFilename => {
   return promise
 }
 
-module.exports = setup
+if (envDbFilename) {
+  // databse filename defined by environtment variable
+  // auto trigger setup
+  setup()
+} else {
+  promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('You must setup E-Com Plus auth before handle SDK'))
+    }, 1000)
+  })
+}
+
+module.exports = {
+  setup,
+  promise
+}
