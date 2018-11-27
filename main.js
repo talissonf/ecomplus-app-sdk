@@ -17,16 +17,17 @@ const axios = require('axios').create({
 })
 
 // keep returned client and promise
-let promise, client
+// optional setup constructor function
+let promise, client, setup
 // try to get database filename from environtment variable
 const envDbFilename = process.env.ECOM_AUTH_DB
 
-// setup database and table
-const setup = dbFilename => {
-  dbFilename = dbFilename || envDbFilename || process.cwd() + '/db.sqlite3'
-  if (!client || client.dbFilename !== dbFilename) {
-    // handle new promise
-    promise = new Promise((resolve, reject) => {
+// handle new promise
+promise = new Promise((resolve, reject) => {
+  // setup database and table
+  setup = dbFilename => {
+    dbFilename = dbFilename || envDbFilename || process.cwd() + '/db.sqlite3'
+    if (!client || client.dbFilename !== dbFilename) {
       const table = 'ecomplus_app_auth'
 
       // init SQLite3 client with database filename
@@ -69,24 +70,26 @@ const setup = dbFilename => {
 
       // update access tokens periodically
       require('./lib/services/update-tokens')(client)
-    })
+    }
+    return promise
   }
-  return promise
-}
+
+  // timeout to handle setup
+  setTimeout(() => {
+    if (!client) {
+      reject(new Error('You must setup E-Com Plus auth before use SDK'))
+    }
+  }, 4000)
+})
 
 if (envDbFilename) {
   // databse filename defined by environtment variable
   // auto trigger setup
   setup()
-} else {
-  promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject(new Error('You must setup E-Com Plus auth before handle SDK'))
-    }, 1000)
-  })
 }
 
 module.exports = {
   setup,
-  promise
+  promise,
+  ecomAuth: promise
 }
