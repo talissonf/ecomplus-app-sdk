@@ -1,14 +1,14 @@
 {
   "name": "ecomplus-app-sdk",
-  "version": "1.0.0",
-  "description": "Authenticating apps to Store API with NodeJS and SQLite",
+  "version": "1.0.1",
+  "description": "App auth and methods to Store API with NodeJS and SQLite",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ecomclub/ecomplus-auth-node.git"
+    "url": "git+https://github.com/ecomclub/ecomplus-app-sdk.git"
   },
   "keywords": [
     "ecomplus",
@@ -20,9 +20,9 @@
   "author": "E-Com Club",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ecomclub/ecomplus-auth-node/issues"
+    "url": "https://github.com/ecomclub/ecomplus-app-sdk/issues"
   },
-  "homepage": "https://github.com/ecomclub/ecomplus-auth-node#readme",
+  "homepage": "https://github.com/ecomclub/ecomplus-app-sdk#readme",
   "dependencies": {
     "sqlite3": "4.x",
     "axios": "0.x",
