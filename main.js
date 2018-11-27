@@ -44,9 +44,9 @@ promise = new Promise((resolve, reject) => {
             application_app_id          INTEGER   NOT NULL,
             application_title           VARCHAR   NOT NULL,
             authentication_id           VARCHAR   NOT NULL  PRIMARY KEY,
-            authentication_permissions  TEXT,
+            authentication_permissions  TEXT      NULL,
             store_id                    INTEGER   NOT NULL,
-            access_token                TEXT,
+            access_token                TEXT      NULL,
             setted_up                   INTEGER   NOT NULL  DEFAULT 0
           );`, ready)
         }
