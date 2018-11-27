@@ -39,7 +39,7 @@ promise = new Promise((resolve, reject) => {
           // try to run first query creating table
           db.run('CREATE TABLE IF NOT EXISTS ' + table + ` (
             created_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
-            updated_at                  DATETIME  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+            updated_at                  DATETIME  NULL,
             application_id              VARCHAR   NOT NULL,
             application_app_id          INTEGER   NOT NULL,
             application_title           VARCHAR   NOT NULL,
