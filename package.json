@@ -1,6 +1,6 @@
 {
   "name": "ecomplus-app-sdk",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "App auth and methods to Store API with NodeJS and SQLite",
   "main": "main.js",
   "scripts": {
