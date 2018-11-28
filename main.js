@@ -63,6 +63,7 @@ promise = new Promise((resolve, reject) => {
             getAuth: require('./lib/methods/get-auth')(client),
             handleCallback: require('./lib/methods/handle-callback')(client),
             apiRequest: require('./lib/methods/api-request')(client),
+            apiApp: require('./lib/methods/api-app')(client),
             refreshToken: require('./lib/methods/refresh-token')(client),
             configureSetup: require('./lib/methods/configure-setup')(client)
           })
