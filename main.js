@@ -9,7 +9,8 @@ const sqlite = require('sqlite3').verbose()
 // create an instance using the config defaults provided by the library
 const axios = require('axios').create({
   // Store API host and base URI
-  baseURL: 'https://api.e-com.plus/v1/'
+  baseURL: 'https://api.e-com.plus/v1/',
+  timeout: 60000
 })
 // always JSON for request with body data
 ;[ 'post', 'patch', 'put' ].forEach(method => {
