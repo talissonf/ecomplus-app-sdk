@@ -1,5 +1,8 @@
 'use strict'
 
+// E-Com Plus Webhooks server IPs for client validation
+const ecomServerIps = [ '139.59.95.252', '159.203.20.142' ]
+
 // SQLite3 client
 // https://github.com/mapbox/node-sqlite3
 const sqlite = require('sqlite3').verbose()
@@ -94,5 +97,6 @@ if (envDbFilename) {
 module.exports = {
   setup,
   promise,
-  ecomAuth: promise
+  ecomAuth: promise,
+  ecomServerIps
 }
