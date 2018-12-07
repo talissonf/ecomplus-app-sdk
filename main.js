@@ -1,12 +1,7 @@
 'use strict'
 
 // E-Com Plus server IPs for client validation
-const ecomServerIps = [
-  '139.59.95.252',
-  '159.203.20.142',
-  '192.241.138.93',
-  '198.199.81.173'
-]
+const ecomServerIps = [ '139.59.95.252', '159.203.20.142', '192.241.138.93', '198.199.81.173' ]
 
 // SQLite3 client
 // https://github.com/mapbox/node-sqlite3
